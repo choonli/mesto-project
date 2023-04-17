@@ -10,4 +10,4 @@
 
 **Просмотр сайта**
 
-* [Ссылка на макет в Figma](https://choonli.github.io/mesto-project/)
+* [Ссылка на сайт](https://choonli.github.io/mesto-project/)
