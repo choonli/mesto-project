@@ -3,10 +3,10 @@
   height: 32px;
   border: none;
   position: absolute;
-  top: -35px;
-  right: -35px;
+  top: -40px;
+  right: -40px;
   background: none;
-  background-image: url(../../../images/close-button.png);
+  background-image: url(../../../images/close-button.svg);
   opacity: 1;
 }
 
@@ -19,7 +19,7 @@
   .popup__close-button {
     width: 20px;
     height: 20px;
-    background-image: url(../../../images/close-icon-small.png);
+    background-image: url(../../../images/close-button-small.svg);
     top: -35px;
     right: 0px;
   }
