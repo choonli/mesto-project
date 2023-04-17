@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="./pages/index.css">
+    <meta name="viewport" content="width=service-device, initial-scale=1.0">
+    <title>Mesto</title>
+  </head>
+  <body>
+    <div class="page">
+      <header class="header">
+        <img class="header__logo" src="./images/logo.svg" alt="логотип сайта">
+      </header>
+      <main class="content">
+       <section class="profile">
+        <div class="profile__wrapper">
+          <img class="profile__avatar" src="./images/userpic.jpg" alt="фото пользователя"/>
+          <div class="profile__container">
+            <div class="profile__info">
+              <p class="profile__name">нелли чуднова</p>
+              <button class="profile__edit-button" type="button"></button>
+            </div>
+            <p class="profile__bio">average jojo enjoyer</p>
+          </div>
+        </div>
+          <button class="profile__add-button"></button>
+      </section>
+        <section class="cards">
+          <div class="card">
+            <img class="card__image" src="./images/jonathan.jpg" alt="джонатан джостар"/>
+            <div class="card__container">
+              <h2 class="card__heading">джонатан джостар</h2>
+              <img class="card__like-button" src="./images/like-button.png" alt="кнопка лайк"/>
+            </div>
+          </div>
+          <div class="card">
+            <img class="card__image" src="./images/joseph.jpg" alt="джозеф джостар"/>
+            <div class="card__container">
+              <h2 class="card__heading">джозеф джостар</h2>
+              <img class="card__like-button" src="./images/like-button.png" alt="кнопка лайк"/>
+            </div>
+          </div>
+          <div class="card">
+            <img class="card__image" src="./images/jotaro.jpg" alt="джотаро куджо"/>
+            <div class="card__container">
+              <h2 class="card__heading">джотаро куджо</h2>
+              <img class="card__like-button" src="./images/like-button.png" alt="кнопка лайк"/>
+            </div>
+          </div>
+          <div class="card">
+            <img class="card__image" src="./images/josuke.jpg" alt="хигашиката джоске"/>
+            <div class="card__container">
+              <h2 class="card__heading">джоске хигашиката</h2>
+              <img class="card__like-button" src="./images/like-button.png" alt="кнопка лайк"/>
+            </div>
+          </div>
+          <div class="card">
+            <img class="card__image" src="./images/giorno.jpg" alt="джорно джованна"/>
+            <div class="card__container">
+              <h2 class="card__heading">джорно джованна</h2>
+              <img class="card__like-button" src="./images/like-button.png" alt="кнопка лайк"/>
+            </div>
+          </div>
+          <div class="card">
+            <img class="card__image" src="./images/jolyne.jpg" alt="джолин куджо"/>
+            <div class="card__container">
+              <h2 class="card__heading">джолин куджо</h2>
+              <img class="card__like-button" src="./images/like-button.png" alt="кнопка лайк"/>
+            </div>
+          </div>
+        </section>
+      </main>
+      <footer class="footer">
+        <p class="footer__copyright">© 2023 Mesto Russia</p>
+      </footer>
+      <div class="popup popup__disabled">
+        <div class="popup__container">
+          <form class="popup__form">
+            <h2 class="popup__heading">Редактировать профиль</h2>
+            <input class="popup__input" type="text" id="username" value="Нелли Чуднова" name="username">
+            <input class="popup__input" type="text" id="user-bio" value="average jojo enjoyer" name="user-bio">
+            <button class="popup__submit-button" type="submit">Сохранить</button>
+          </form>
+          <button type="button" class="popup__close-button"></button>
+        </div>
+      </div>
+    </div>
+  </body>
