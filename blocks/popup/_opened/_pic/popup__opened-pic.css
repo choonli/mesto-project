@@ -1,0 +1,5 @@
+.popup_opened_pic {
+  background-color: rgba(0, 0, 0, .9);
+  display: flex;
+  justify-content: center;
+}
