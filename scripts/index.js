@@ -1,16 +1,15 @@
 //объявляем постоянные переменные
-const editButton = document.querySelector('.profile__edit-button')
-const popupProfile = document.querySelector('.popup-profile')
-const closeButtons = document.querySelectorAll('.popup__close-button')
-const profileName = document.querySelector('.profile__name')
-const profileBio = document.querySelector('.profile__bio')
-const nameInput = document.querySelector('.name__input')
-const bioInput = document.querySelector('.bio__input')
-const cardsContainer = document.querySelector('.cards')
+const editButton = document.querySelector('.profile__edit-button');
+const popupProfile = document.querySelector('.popup-profile');
+const closeButtons = document.querySelectorAll('.popup__close-button');
+const profileName = document.querySelector('.profile__name');
+const profileBio = document.querySelector('.profile__bio');
+const nameInput = document.querySelector('.name__input');
+const bioInput = document.querySelector('.bio__input');
+const cardsContainer = document.querySelector('.cards');
 const placeTemplate = document.querySelector('#card-place').content;
 const placeNameInput = document.querySelector('#placename');
 const linkInput = document.querySelector('#imglink');
-const popupForm = document.querySelector('.popup__form')
 const popupPic = document.querySelector('.popup__zoom-pic');
 const popupPicDescription = document.querySelector('.popup__pic-description');
 const popupContainer = document.querySelector('.popups');
@@ -18,6 +17,9 @@ const popupAdd = document.querySelector('.popup__add');
 const openedPic = document.querySelector('.popup_opened_pic');
 const zoomPic = document.querySelector('.popup__zoom-pic');
 const addButton = document.querySelector('.profile__add-button');
+const popupOverlay = document.querySelectorAll('.popups');
+const popupForm = document.querySelector('.popup__form');
+const popupInput = popupForm.querySelector('.popup__input');
 
 //функция открытия/закрытия попапа редактирования
 function openPopup(popup) {
@@ -36,6 +38,27 @@ closeButtons.forEach(closeButtons => closeButtons.addEventListener('click', func
   closePopup(popupProfile);
 }));
 
+//закрытие попапов по клику на оверлей
+
+
+//закрытие попапов клавишей esc 
+document.addEventListener('keydown', function(e) {
+  if (e.key == "Escape") {
+    closePopup(popupProfile);
+  }
+});
+
+document.addEventListener('keydown', function(e) {
+  if (e.key == "Escape") {
+    closePopup(popupAdd);
+  }
+});
+
+document.addEventListener('keydown', function(e) {
+  if (e.key == "Escape") {
+    closePopup(openedPic);
+  }
+});
 
 //редактирование имени и информации о себе
 function handleFormSubmit(evt) {
@@ -130,3 +153,33 @@ closeButtons.forEach(closeButtons => closeButtons.addEventListener('click', func
   closePopup(openedPic);
 }));
 
+//валидация форм
+const formError = popupForm.querySelector(`.${popupInput}-error`);
+
+const showError = (input, errorMessage) => {
+  input.classList.add('popup__input_type_error');
+  formError.textContent = errorMessage;
+  popupForm.classList.add('popup__input-error_active');
+}
+
+const hideError = (input) => {
+  input.classList.remove('popup__input_type_error');
+  popupForm.classList.remove('popup__input-error_active');
+  formError.textContent = '';
+}
+
+const checkInputValidity = () => {
+  if (!popupInput.validity.valid) {
+    showError(popupInput, popupInput.validationMessage);
+  } else {
+    hideError(popupInput);
+  }
+}
+
+popupForm.addEventListener('submit', function(evt) {
+  evt.preventDefault();
+});
+
+popupInput.addEventListener('input', function() {
+  checkInputValidity();
+});
