@@ -1,0 +1,12 @@
+.popup__placeholder {
+  display: none;
+  width: 100%; 
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  position: absolute;
+  color: #C4C4C4;
+  top: 0;
+  bottom: 0;
+  margin: 13px 0;
+}
