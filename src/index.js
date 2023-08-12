@@ -1,9 +1,9 @@
-import '../pages/index.css'
-import { enableValidation } from './validate.js';
-import { cardsContainer, openedPic, createCard} from './card.js';
-import { closeButtons, placeNameInput, linkInput, popupAdd, addButton, editButton, popupProfile, selectors } from './constants.js';
-import { handleFormSubmit } from './utils.js';
-import { closePopup, openPopup } from './popup.js';
+import './/pages/index.css';
+import { enableValidation } from './components/validate.js';
+import { cardsContainer, openedPic, createCard} from './components/card.js';
+import { closeButtons, placeNameInput, linkInput, popupAdd, addButton, editButton, popupProfile, selectors } from './components/constants.js';
+import { handleFormSubmit } from './components/utils.js';
+import { closePopup, openPopup } from './components/popup.js';
 
 popupAdd.addEventListener('submit', (evt) => {
   cardsContainer.prepend(createCard(placeNameInput.value, linkInput.value));
