@@ -1,6 +1,3 @@
-import { addButton } from "./constants.js";
-import { closePopup } from "./popup.js";
-
 const showInputError = (formElement, inputElement, errorMessage) => {
   const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
   inputElement.classList.add('popup__input_type_error');
@@ -20,6 +17,12 @@ const checkInputValidity = (formElement, inputElement) => {
     inputElement.setCustomValidity(inputElement.dataset.errorMessage);
   } else {
     inputElement.setCustomValidity("");
+  }
+
+  if (!inputElement.validity.valid) {
+    showInputError(formElement, inputElement, inputElement.validationMessage);
+  } else {
+    hideInputError(formElement, inputElement)
   }
 };
 
@@ -47,8 +50,10 @@ const hasInvalidInput = (inputList) => {
 const toggleButtonState = (inputList, buttonElement) => {
   if (hasInvalidInput(inputList)) {
     buttonElement.classList.add('popup__submit-button_disabled');
+    buttonElement.disabled = true;
   } else {
     buttonElement.classList.remove('popup__submit-button_disabled');
+    buttonElement.disabled = false;
   }
 }
 

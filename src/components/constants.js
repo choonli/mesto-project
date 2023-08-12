@@ -8,13 +8,14 @@ export const formSaveEditBtn = popupProfile.querySelector('.popup__submit-button
 export const popupAdd = document.querySelector('.popup__add');
 export const formAdd = popupAdd.querySelector('.popup__form');
 export const formSaveAddBtn = popupAdd.querySelector('.popup__submit-button');
+export const popupForm = document.querySelector('.popup__form')
 
 
 export const editButton = document.querySelector('.profile__edit-button');
 export const profileName = document.querySelector('.profile__name');
 export const profileBio = document.querySelector('.profile__bio');
 export const placeNameInput = document.querySelector('#placename');
-export const linkInput = document.querySelector('#imglink');
+export const linkInput = document.querySelector('#img-link');
 
 export const closeButtons = document.querySelectorAll('.popup__close-button');
 export const addButton = document.querySelector('.profile__add-button');

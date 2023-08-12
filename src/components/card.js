@@ -1,6 +1,4 @@
-import { openPopup } from './popup.js';
-import { addButton, popupAdd } from './constants.js';
-import {} from './utils.js';
+import { openPopup} from './popup.js';
 
 const placeTemplate = document.querySelector('#card-place').content;
 export const cardsContainer = document.querySelector('.cards')
@@ -40,7 +38,7 @@ initialCards.forEach(function(item) {
   cardsContainer.prepend(createCard(item.name, item.link));
 });
   
-function createCard (name, link) {
+export function createCard (name, link) {
   const card = placeTemplate.querySelector('.card').cloneNode(true);
 
   card.querySelector('.card__heading').textContent = name;
@@ -65,7 +63,3 @@ function createCard (name, link) {
     
   return card;
 }
-
-addButton.addEventListener('click', function() {
-  openPopup(popupAdd);
-});

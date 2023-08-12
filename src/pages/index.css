@@ -57,3 +57,4 @@
 @import url(../blocks/popup/__input-error/_active/popup__input-error_active.css);
 @import url(../blocks/popup/__input/_type_error/popup__input_type_error.css);
 @import url(../blocks/popup/__submit-button/_disabled/popup_submit-button_disabled.css);
+@import url(../blocks/popup/__input-container/popup__input-container.css);
