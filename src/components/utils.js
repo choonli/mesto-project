@@ -11,3 +11,8 @@ export function handleFormSubmit(evt) {
   closePopup(popupProfile);
   popupForm.reset();
 };
+
+export function disableButton(buttonElement) {
+  buttonElement.classList.add('popup__submit-button_disabled');
+  buttonElement.disabled = true;
+}

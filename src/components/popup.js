@@ -1,24 +1,24 @@
-import {} from './validate.js';
 import { openedPic } from './card.js';
 import { popupProfile, popupAdd } from './constants.js';
 
 //функция открытия/закрытия попапа 
 export function openPopup(popup) {
   popup.classList.add('popup_opened');
+  document.addEventListener('keydown', closeByEscape);
 }
 
 export function closePopup(popup) {
   popup.classList.remove('popup_opened');
+  document.removeEventListener('keydown', closeByEscape);
 }
 
 //закрытие попапов клавишей esc 
-document.addEventListener('keydown', function(e) {
-  if (e.key == "Escape") {
-    closePopup(popupProfile);
-		closePopup(popupAdd);
-		closePopup(openedPic);
+function closeByEscape(evt) {
+  if (evt.key === 'Escape') {
+    const openedPopup = document.querySelector('.popup_opened')
+    closePopup(openedPopup);
   }
-});
+}
 
 //закрытие попапов по клику на оверлей 
 const popups = document.querySelectorAll('.popup');
