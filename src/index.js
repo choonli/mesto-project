@@ -4,6 +4,7 @@ import { cardsContainer, createCard} from './components/card.js';
 import { placeNameInput, linkInput, popupAdd, addButton, editButton, popupProfile, selectors } from './components/constants.js';
 import { handleFormSubmit } from './components/utils.js';
 import { closePopup, openPopup } from './components/popup.js';
+import { nameInput, bioInput, profileName, profileBio } from './components/constants';
 
 popupAdd.addEventListener('submit', (evt) => {
   cardsContainer.prepend(createCard(placeNameInput.value, linkInput.value));
@@ -17,6 +18,8 @@ addButton.addEventListener('click', function() {
 
 editButton.addEventListener('click', function(evt) {
   openPopup(popupProfile);
+  nameInput.value = profileName.textContent;
+  bioInput.value = profileBio.textContent;
 });
 
 popupProfile.addEventListener('submit', handleFormSubmit); 
