@@ -1,0 +1,18 @@
+.profile__ava-edit-button {
+  width: 120px;
+  height: 120px;
+  border: none;
+  border-radius: 50%;
+  background-color: transparent;
+  margin: 0px 30px 0px 0px;
+  padding: 0;
+}
+
+
+.profile__ava-edit-button:hover {
+  background-image: url(../../../images/editAva-button.svg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: rgba(0, 0, 0, 0.8);
+  cursor: pointer;
+}

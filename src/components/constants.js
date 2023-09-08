@@ -8,7 +8,13 @@ export const formSaveEditBtn = popupProfile.querySelector('.popup__submit-button
 export const popupAdd = document.querySelector('.popup__add');
 export const formAdd = popupAdd.querySelector('.popup__form');
 export const formSaveAddBtn = popupAdd.querySelector('.popup__submit-button');
-export const popupForm = document.querySelector('.popup__form')
+export const popupForm = document.querySelector('.popup__form');
+export const profileAva = document.querySelector('.profile__avatar');
+export const avaBtn = document.querySelector('.profile__ava-edit-button');
+export const avaPopup = document.querySelector('.popup__ava-update');
+export const avaSaveBtn = avaPopup.querySelector('.popup__submit-button');
+export const avaForm = document.querySelector('#ava-form')
+export const avaInput = avaPopup.querySelector('.ava__input');
 
 
 export const editButton = document.querySelector('.profile__edit-button');
