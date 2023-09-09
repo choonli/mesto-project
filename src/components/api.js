@@ -1,12 +1,10 @@
-
-
 const configUrl = {
   url: "https://nomoreparties.co/v1/plus-cohort-28",
   headers: {
     authorization: "06b149ae-6f10-4c61-8b9f-edccc9c12171",
-    "Content-Type": "application/json"
+    "Content-Type": "application/json",
   }
-}
+};
 
 function checkResponse(res) {
   if (!res.ok) {
@@ -29,33 +27,59 @@ export function getCards () {
   .then(checkResponse)
 }
 
-export function editUserProfile (newProfile) {
+
+export function editUser(newUser) {
   return fetch(`${configUrl.url}/users/me`, {
-    method: 'PATCH',
+    method: "PATCH",
     headers: configUrl.headers,
     body: JSON.stringify({
-      name: newProfile.name,
-      about: newProfile.about
-    }),
+      name: newUser.name,
+      about: newUser.about,
+    })
   })
   .then(checkResponse);
 }
 
-export function addCard(card) {
+export function addNewCard(newCard) {
   return fetch(`${configUrl.url}/cards`, {
     method: 'POST',
     headers: configUrl.headers,
     body: JSON.stringify({
-      name: card.name,
-      link: card.link
+      name: newCard.name,
+      link: newCard.link,
     })
   })
-  .then(checkResponse)
+.then(checkResponse);
 }
 
-export function editAva(link) {
-  return fetch(`${configUrl}/users/me/avatar`, {
-    method: 'PATCH',
+
+export function deleteCard(cardId) {
+  return fetch(`${configUrl.url}/cards/${cardId}`, {
+    method: 'DELETE',
+    headers: configUrl.headers,
+  })
+  .then(checkResponse);
+}
+
+export function addLike(cardId) {
+  return fetch(`${configUrl.url}/cards/likes/${cardId}`, {
+    method: 'PUT',
+    headers: configUrl.headers,
+  })
+  .then(checkResponse);
+}
+
+export function removeLike(cardId) {
+  return fetch(`${configUrl.url}/cards/likes/${cardId}`, {
+    method: 'DELETE',
+    headers: configUrl.headers,
+  })
+  .then(checkResponse);
+}
+
+export function updateAva({avatar: link}) {
+  return fetch(`${configUrl.url}/users/me/avatar`, {
+    method: "PATCH",
     headers: configUrl.headers,
     body: JSON.stringify({
       avatar: link,
@@ -63,4 +87,3 @@ export function editAva(link) {
   })
   .then(checkResponse);
 }
-
