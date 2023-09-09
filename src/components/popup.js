@@ -1,6 +1,3 @@
-import { openedPic } from './card.js';
-import { popupProfile, popupAdd } from './constants.js';
-
 //функция открытия/закрытия попапа 
 export function openPopup(popup) {
   popup.classList.add('popup_opened');

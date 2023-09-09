@@ -4,10 +4,24 @@ import { cardsContainer, createCard} from './components/card.js';
 import { placeNameInput, linkInput, popupAdd, addButton, 
   editButton, popupProfile, selectors, profileAva, avaBtn, 
   avaPopup,  nameInput, bioInput, profileName, profileBio, 
-  avaInput, avaForm, formEdit, formAdd } from './components/constants.js';
-import { handleFormSubmit, handleSubmit } from './components/utils.js';
+  avaInput, avaForm, formEditProfile, formAddCard } from './components/constants.js';
+import { handleSubmit } from './components/utils.js';
 import { closePopup, openPopup } from './components/popup.js';
-import { addLike, addNewCard, deleteCard, editUser, getCards, getUserInfo, removeLike, updateAva } from './components/api.js';
+import { addLike, addNewCard, deleteCard,
+  editUser, getCards, getUserInfo,
+  removeLike, updateAva }
+from './components/api.js';
+
+//редактирование имени и информации о себе
+function submitEditProfileForm(evt) {
+  evt.preventDefault();
+    
+  profileName.textContent = nameInput.value;
+  profileBio.textContent = bioInput.value;
+
+  closePopup(popupProfile);
+  popupForm.reset();
+};
 
 Promise.all([getUserInfo(), getCards()])
 .then(([user, cards]) => {
@@ -59,7 +73,7 @@ function updateProfile(evt) {
   handleSubmit(makeRequest, evt);
 }
 
-formEdit.addEventListener('submit', updateProfile);
+formEditProfile.addEventListener('submit', updateProfile);
 
 function addCard(evt) {
   evt.preventDefault();
@@ -79,7 +93,7 @@ function addCard(evt) {
   handleSubmit(makeRequest, evt);
 }
 
-formAdd.addEventListener('submit', addCard)
+formAddCard.addEventListener('submit', addCard)
 
 export function toggleLike(cardId, element) {
   const card = element.closest('.card');
@@ -115,8 +129,6 @@ editButton.addEventListener('click', function(evt) {
   nameInput.value = profileName.textContent;
   bioInput.value = profileBio.textContent;
 });
-
-popupProfile.addEventListener('submit', handleFormSubmit); 
 
 enableValidation(selectors);
 

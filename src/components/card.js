@@ -1,5 +1,4 @@
 import { removeCard, toggleLike } from '../index.js';
-import { addCard } from './api.js';
 import { openPopup } from './popup.js';
 
 const placeTemplate = document.querySelector('#card-place').content;
@@ -10,10 +9,11 @@ export const openedPic = document.querySelector('.popup_opened_pic');
   
 export function createCard(cardName, imageLink, likes, cardId, userId, user) {
   const card = placeTemplate.querySelector('.card').cloneNode(true);
+  const cardImg = card.querySelector('.card__image');
 
   card.querySelector('.card__heading').textContent = cardName;
-  card.querySelector('.card__image').src = imageLink;
-  card.querySelector('.card__image').alt = cardName;
+  cardImg.src = imageLink;
+  cardImg.alt = cardName;
   
   card.querySelector('.card__trash-button').addEventListener('click', function() {
     const deleteCard = card.querySelector('.card__trash-button').closest('.card');
@@ -24,9 +24,9 @@ export function createCard(cardName, imageLink, likes, cardId, userId, user) {
     toggleLike(cardId, cardLike);
   });
   
-  card.querySelector('.card__image').addEventListener('click', function() {
+  cardImg.addEventListener('click', function() {
     openPopup(openedPic);
-    popupPic.src = card.querySelector('.card__image').src;
+    popupPic.src = cardImg.src;
     popupPicDescription.textContent = card.querySelector('.card__heading').textContent;
     popupPic.alt = card.querySelector('.card__heading').textContent;
   });

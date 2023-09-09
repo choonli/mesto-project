@@ -1,12 +1,12 @@
 //объявляем постоянные переменные
 export const popupProfile = document.querySelector('.popup-profile');
-export const formEdit = popupProfile.querySelector('.popup__form');
+export const formEditProfile = popupProfile.querySelector('.popup__form');
 export const nameInput = formEdit.querySelector('.name__input');
 export const bioInput = formEdit.querySelector('.bio__input');
 export const formSaveEditBtn = popupProfile.querySelector('.popup__submit-button');
 
 export const popupAdd = document.querySelector('.popup__add');
-export const formAdd = popupAdd.querySelector('.popup__form');
+export const formAddCard = popupAdd.querySelector('.popup__form');
 export const formSaveAddBtn = popupAdd.querySelector('.popup__submit-button');
 export const popupForm = document.querySelector('.popup__form');
 export const profileAva = document.querySelector('.profile__avatar');

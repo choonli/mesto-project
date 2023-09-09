@@ -1,5 +1,3 @@
-import { disableButton } from "./utils";
-
 const showInputError = (formElement, inputElement, errorMessage, config) => {
   const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
   inputElement.classList.add(config.inputErrorClass);
@@ -71,3 +69,8 @@ const hasInvalidInput = (inputList) => {
     return !inputElement.validity.valid;
   })
 };
+
+function disableButton(buttonElement) {
+  buttonElement.classList.add('popup__submit-button_disabled');
+  buttonElement.disabled = true;
+}
