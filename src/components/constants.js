@@ -25,6 +25,12 @@ export const linkInput = document.querySelector('#img-link');
 
 export const closeButtons = document.querySelectorAll('.popup__close-button');
 export const addButton = document.querySelector('.profile__add-button');
+export const placeTemplate = document.querySelector('#card-place').content;
+export const cardImg = placeTemplate.querySelector('.card__image');
+export const openedPic = document.querySelector('.popup_opened_pic');
+
+export const cardsContainer = document.querySelector('.cards');
+export const trashButton = document.querySelector('.card__trash-button');
 
 export const selectors = {
   formSelector: '.popup__form',
@@ -35,3 +41,11 @@ export const selectors = {
   inputErrorClass: 'popup__input_type_error',
   errorClass: 'popup__input-error_active'
 }
+
+export const configUrl = {
+  url: "https://nomoreparties.co/v1/plus-cohort-28",
+  headers: {
+    authorization: "06b149ae-6f10-4c61-8b9f-edccc9c12171",
+    "Content-Type": "application/json",
+  }
+};
