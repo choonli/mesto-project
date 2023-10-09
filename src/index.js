@@ -2,14 +2,13 @@ import './/pages/index.css';
 import Api from './components/Api.js'
 import Card from './components/Card.js'
 import FormValidator from './components/FormValidator.js'
-import Popup from './components/Popup.js';
 import PopupWithForm from './components/PopupWithForm.js';
 import PopupWithImage from './components/PopupWithImage.js';
 import Section from './components/Section.js';
 import UserInfo from './components/UserInfo.js';
 import { popupAdd, avaPopup, popupProfile, addButton, avaBtn, editButton, 
   placeTemplate, selectors, formEditProfile, formAddCard, 
-  avaForm, avaInput, cardImage, openedPic, cardsContainer, nameInput, bioInput, placeNameInput, linkInput, profileName, profileBio, trashButton, cardImg 
+  avaForm, avaInput, openedPic, nameInput, bioInput, placeNameInput, linkInput, cardImg 
 } from './components/constants.js'
 
 //Api
