@@ -27,6 +27,7 @@ export const closeButtons = document.querySelectorAll('.popup__close-button');
 export const addButton = document.querySelector('.profile__add-button');
 export const placeTemplate = document.querySelector('#card-place').content;
 export const cardImg = placeTemplate.querySelector('.card__image');
+export const likeButton = placeTemplate.querySelector('.card__like-button');
 export const openedPic = document.querySelector('.popup_opened_pic');
 
 export const cardsContainer = document.querySelector('.cards');

@@ -1,7 +1,7 @@
 export default class Api {
   constructor({url, headers}) {
-    this.url = url,
-    this.headers = headers
+    this.url = url;
+    this.headers = headers;
   }
 
   _checkResponse(res) {
@@ -54,7 +54,12 @@ export default class Api {
       method: 'DELETE',
       headers: this.headers,
     })
-    .then(res => this._checkResponse(res));
+    .then(res => this._checkResponse(res))
+    .catch(error => {
+      //чек на ерроры + лог
+      console.error('Error while deleting card:', error);
+      throw error;
+    });
   }
 
   addLike(cardId) {
