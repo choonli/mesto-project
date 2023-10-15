@@ -1,15 +1,15 @@
-import './/pages/index.css';
-import Api from './components/Api.js'
-import Card from './components/Card.js'
-import FormValidator from './components/FormValidator.js'
-import PopupWithForm from './components/PopupWithForm.js';
-import PopupWithImage from './components/PopupWithImage.js';
-import Section from './components/Section.js';
-import UserInfo from './components/UserInfo.js';
+import './index.css';
+import Api from '../components/Api.js'
+import Card from '../components/Card.js'
+import FormValidator from '../components/FormValidator.js'
+import PopupWithForm from '../components/PopupWithForm.js';
+import PopupWithImage from '../components/PopupWithImage.js';
+import Section from '../components/Section.js';
+import UserInfo from '../components/UserInfo.js';
 import { popupAdd, avaPopup, popupProfile, addButton, avaBtn, editButton, 
   placeTemplate, selectors, formEditProfile, formAddCard, 
   avaForm, openedPic, nameInput, bioInput
-} from './utils/constants.js'
+} from '../utils/constants.js'
 
 let userId;
 
@@ -82,7 +82,7 @@ popupWithFormEdit.setEventListeners();
 const popupWithFormAva = new PopupWithForm(avaPopup, (values) => {
   popupWithFormAva.renderLoading('Сохранение...');
 
-  api.updateAva(values['ava-link'])
+  api.updateAva(values['avalink'])
   .then((res) => {
     userInfo.setUserAva(res.avatar);
     popupWithFormAva.close();
