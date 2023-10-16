@@ -40,7 +40,7 @@ const userInfo = new UserInfo({
 });
 
 //PopupWithForm
-const popupWithFormAdd = new PopupWithForm(popupAdd, (values) => {
+const popupWithFormAdd = new PopupWithForm('.popup__add', (values) => {
   popupWithFormAdd.renderLoading('Сохранение...');
 
   api.addNewCard(values['placename'], values['imglink'])
@@ -58,7 +58,7 @@ addButton.addEventListener('click', function() {
 
 popupWithFormAdd.setEventListeners();
 
-const popupWithFormEdit = new PopupWithForm(popupProfile, (values) => {
+const popupWithFormEdit = new PopupWithForm('.popup-profile', (values) => {
   popupWithFormEdit.renderLoading('Сохранение...');
 
   api.editUser(values['username'], values['user-bio'])
@@ -79,7 +79,7 @@ editButton.addEventListener('click', function() {
 
 popupWithFormEdit.setEventListeners();
 
-const popupWithFormAva = new PopupWithForm(avaPopup, (values) => {
+const popupWithFormAva = new PopupWithForm('.popup__ava-update', (values) => {
   popupWithFormAva.renderLoading('Сохранение...');
 
   api.updateAva(values['avalink'])
@@ -88,7 +88,7 @@ const popupWithFormAva = new PopupWithForm(avaPopup, (values) => {
     popupWithFormAva.close();
   })
   .catch((err) => console.log(`Ошибка: ${err}`))
-  .finally(() => popupWithFormEdit.renderLoading('Сохранить'))
+  .finally(() => popupWithFormAva.renderLoading('Сохранить'))
 });
 
 avaBtn.addEventListener('click', function() {
@@ -98,7 +98,7 @@ avaBtn.addEventListener('click', function() {
 popupWithFormAva.setEventListeners();
 
 //PopupWithImage
-const popupWithImage = new PopupWithImage(openedPic);
+const popupWithImage = new PopupWithImage('.popup_opened_pic');
 
 function handleCardClick(name, link) {
   popupWithImage.open(name, link);
@@ -120,9 +120,10 @@ function createCard(data) {
   const card = new Card({
     data: data,
     handleCardClick: handleCardClick,
-    handleLike: handleLike,
+    handleAddLike: addLike,
+    handleRemoveLike: removeLike,
     handleDelete: handleDelete
-  }, placeTemplate, userId)
+  }, placeTemplate, userId, api)
 
   const cardElement = card.createCard();
   return cardElement;
@@ -134,43 +135,32 @@ Promise.all([api.getUserInfo(), api.getCards()])
   userId = user._id;
   userInfo.setUserInfo(user.name, user.about);
   userInfo.setUserAva(user.avatar);
-  cards.reverse().forEach(item => {
-    const card = createCard(item);
-    container.addItem(card);
-  });
+  container.renderItems(cards);
 })
 .catch((err) => console.log(`Ошибка: ${err}`));
 
 //like
-export function handleLike(cardId, likeButton) {
-  const card = likeButton.closest('.card');
-  const likeCount = card.querySelector('.card__like-count');
+function addLike(card) {
+  api.addLike(card.getId())
+  .then((res) => {
+    card.addLike(res);
+  })
+  .catch((err) => console.log(`Ошибка: ${err}`))
+}
 
-  if (likeButton.classList.contains('card__like-button_active')) {
-    api.removeLike(cardId)
-    .then((res) => {
-      likeButton.classList.remove('card__like-button_active');
-      likeCount.textContent = res.likes.length;
-    })
-    .catch((err) => console.log(`Ошибка: ${err}`))
-  } else {
-    api.addLike(cardId)
-    .then((res) => {
-      likeButton.classList.add('card__like-button_active');
-      likeCount.textContent = res.likes.length;
-    })
-    .catch((err) => console.log(`Ошибка: ${err}`))
-  }
+function removeLike(card) {
+  api.removeLike(card.getId())
+  .then((res) => {
+    card.removeLike(res);
+  })
+  .catch((err) => console.log(`Ошибка: ${err}`))
 }
 
 //delete
-function handleDelete(cardId, deleteButton) {
-  api.deleteCard(cardId)
-    .then(() => {
-      const cardElement = deleteButton.closest('.card');
-      if (cardElement) {
-        cardElement.remove();
-      }
+function handleDelete(card) {
+  api.deleteCard(card.getId())
+    .then((res) => {
+      card.deleteCard(res);
     })
     .catch((err) => console.log(`Ошибка: ${err}`))
 }
